@@ -1,0 +1,7 @@
+# cg2d 客戶端 — GBK 編碼
+
+- `luaUI/`、`lua/` 內 Lua 檔為 **GBK**，不是 UTF-8。
+- 禁止用編輯器直接 Apply/Replace 修改含中文的字串；用 Python bytes + GBK 讀寫。
+- 每次改完含中文的 Lua，必跑：`python luaUI/scripts/verify_gbk.py <檔案>`
+- 改 UI/Lua 時，**客戶端與服務端兩邊**都要有 GBK 設定（`D:\cgtw` + `C:\cgmsv_26.5c\gmsv`）。
+- 詳細規則見 `.cursor/rules/cgmsv-gbk-encoding.mdc`

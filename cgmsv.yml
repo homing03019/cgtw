@@ -1,0 +1,71 @@
+BinLoader:
+  - Name: "[BASE]"
+    Graphic: bin\graphic_66.bin
+    GraphicInfo: bin\graphicinfo_66.bin
+    Anime: bin\Anime_4.bin
+    AnimeInfo: bin\AnimeInfo_4.bin
+    Coordinate: ""
+    CoordinateInfo: ""
+  - Name: "[EX]"
+    Graphic: bin\GraphicEx_5.bin
+    GraphicInfo: bin\GraphicInfoEx_5.bin
+    Anime: bin\AnimeEx_1.Bin
+    AnimeInfo: bin\AnimeInfoEx_1.Bin
+    Coordinate: ""
+    CoordinateInfo: ""
+  - Name: "[V2]"
+    Graphic: ""
+    GraphicInfo: ""
+    Anime: ""
+    AnimeInfo: ""
+    Coordinate: ""
+    CoordinateInfo: ""
+  - Name: "[V3]"
+    Graphic: bin\GraphicV3_19.bin
+    GraphicInfo: bin\GraphicInfoV3_19.bin
+    Anime: bin\AnimeV3_8.bin
+    AnimeInfo: bin\AnimeInfoV3_8.bin
+    Coordinate: bin\Coordinatev3_11.bin
+    CoordinateInfo: bin\Coordinateinfov3_11.bin
+  - Name: "[Puk2]"
+    Graphic: bin\Puk2\Graphic_PUK2_2.bin
+    GraphicInfo: bin\Puk2\GraphicInfo_PUK2_2.bin
+    Anime: bin\Puk2\Anime_PUK2_4.bin
+    AnimeInfo: bin\Puk2\AnimeInfo_PUK2_4.bin
+    Coordinate: ""
+    CoordinateInfo: ""
+  - Name: "[Puk3]"
+    Graphic: bin\Puk3\Graphic_PUK3_1.bin
+    GraphicInfo: bin\Puk3\GraphicInfo_PUK3_1.bin
+    Anime: bin\Puk3\Anime_PUK3_2.bin
+    AnimeInfo: bin\Puk3\AnimeInfo_PUK3_2.bin
+    Coordinate: ""
+    CoordinateInfo: ""
+  - Name: "[Joy]"
+    Graphic: bin\Graphic_Joy_125.bin
+    GraphicInfo: bin\GraphicInfo_Joy_125.bin
+    Anime: bin\Anime_Joy_91.bin
+    AnimeInfo: bin\AnimeInfo_Joy_91.bin
+    Coordinate: ""
+    CoordinateInfo: ""
+  - Name: "[Joy_EX]"
+    Graphic: bin\Graphic_Joy_EX_96.bin
+    GraphicInfo: bin\GraphicInfo_Joy_EX_96.bin
+    Anime: bin\Anime_Joy_EX_93.bin
+    AnimeInfo: bin\AnimeInfo_Joy_EX_93.bin
+    Coordinate: ""
+    CoordinateInfo: ""
+  - Name: "[Joy_CH1]"
+    Graphic: bin\Graphic_Joy_CH1.bin
+    GraphicInfo: bin\GraphicInfo_Joy_CH1.bin
+    Anime: bin\Anime_Joy_CH1.bin
+    AnimeInfo: bin\AnimeInfo_Joy_CH1.bin
+    Coordinate: ""
+    CoordinateInfo: ""
+  - Name: "[A1]"
+    Graphic: bin\Graphic_v999.bin
+    GraphicInfo: bin\GraphicInfo_v999.bin
+    Anime: ""
+    AnimeInfo: ""
+    Coordinate: ""
+    CoordinateInfo: ""

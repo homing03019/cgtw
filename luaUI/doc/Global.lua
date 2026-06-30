@@ -1,0 +1,118 @@
+---@class LuaPlayerItem
+---@field use boolean @是否使用中
+---@field name string @物品名称
+---@field memo string @物品备注
+---@field desc string[] @物品说明，每项一行
+---@field descLine integer @说明行数
+---@field color integer @物品颜色
+---@field imageNo integer @图号
+---@field lv integer @等级
+---@field itemId integer @物品 ID
+---@field count integer @数量
+---@field itemType integer @物品类型
+---@field canUseInField integer @可否在地图使用
+---@field battleUseFlag integer @战斗使用标记
+---@field target integer @目标标记
+---@field flag integer @物品标记
+---@field hasDesc boolean @是否有说明
+
+---@class PlayerModule
+---@field mapX integer @动态角色地图 X
+---@field mapY integer @动态角色地图 Y
+---@field floor integer @动态当前楼层
+---@field mapId integer @动态当前地图 ID
+---@field tribeType integer @种族类型
+---@field lv integer @等级
+---@field rebirth integer @转生次数
+---@field feverTime integer @打卡时间
+---@field enableFever integer @是否启用打卡
+---@field hp integer @当前 HP
+---@field maxHp integer @最大 HP
+---@field fp integer @当前 FP
+---@field maxFp integer @最大 FP
+---@field exp integer @当前经验
+---@field nextExp integer @下级经验
+---@field vit integer @体力
+---@field str integer @力量
+---@field tough integer @强度
+---@field quick integer @速度
+---@field magic integer @魔法
+---@field stamina integer @耐力
+---@field dex integer @灵巧
+---@field intelligence integer @智力
+---@field atk integer @攻击
+---@field def integer @防御
+---@field agi integer @敏捷
+---@field magicPower integer @魔攻
+---@field recovery integer @回复
+---@field charm integer @魅力
+---@field modAttack integer @修正攻击
+---@field modDefence integer @修正防御
+---@field fame integer @声望
+---@field posion integer @中毒
+---@field sleep integer @睡眠
+---@field stone integer @石化
+---@field drunk integer @酒醉
+---@field confusion integer @混乱
+---@field amnesia integer @遗忘
+---@field critical integer @必杀
+---@field counter integer @反击
+---@field hitrate integer @命中
+---@field avoid integer @闪避
+---@field attrs integer[] @属性值
+---@field injury integer @受伤
+---@field penalty integer @惩罚
+---@field gold integer @金币
+---@field title integer @称号
+---@field duelPoint integer @决斗点
+---@field name string @角色名
+---@field ownTitle string @拥有称号
+---@field customTitle string @自定义称号
+---@field familyTitle string @家族称号
+---@field totalSkillSlot integer @技能格数量
+---@field walkSpeed integer @行走速度
+---@field rideStepCount integer @骑乘步数
+---@field imageNo integer @图号
+---@field faceImage integer @头像图号
+---@field ojbIndex integer @对象索引
+---@field dir integer @方向
+---@field mapActionFlag integer @地图动作标记
+---@field partyMode integer @队伍模式
+---@field charActionState integer @角色动作状态
+---@field actionEffectNo integer @动作效果编号
+---@field switchFlags integer @开关标记
+---@field battlePosition integer @战斗位置
+---@field items LuaPlayerItem[] @物品列表
+---@field Items LuaPlayerItem[] @items 别名
+---@field itemList LuaPlayerItem[] @items 别名
+---@field familyTitle2 string @家族称号 2
+---@field crystal integer @水晶
+---@field goldLimit integer @金币上限
+---@field poolGoldLimit integer @银行金币上限
+---@field poolGoldLimit2 integer @银行金币上限 2
+---@field isInjury boolean @是否受伤
+
+---@type PlayerModule
+Player = Player or {}
+
+---@class GraphicInfo
+---@field seqNo integer @图形全局索引
+---@field offset integer @图形数据文件偏移
+---@field length integer @图形数据长度
+---@field x integer @绘制偏移 X
+---@field y integer @绘制偏移 Y
+---@field w integer @图形宽度
+---@field h integer @图形高度
+---@field graphicFileIndex integer @图形文件索引
+---@field field16 integer @未知字段
+---@field sx integer @占地 X
+---@field sy integer @占地 Y
+---@field blockFlag integer @阻挡标记
+---@field mapNo integer @地图图号
+
+---@class GraphicModule
+Graphic = Graphic or {}
+
+---@param mapNo integer @地图图号
+---@return GraphicInfo|nil info @查不到时返回 nil
+function Graphic.GetGrahpicInfo(mapNo) end

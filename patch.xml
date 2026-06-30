@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="Big5" ?>
+			<servers>
+				<server>
+					<name>正式伺服器－台灣</name>
+					<url>http://patch.joypark.com.tw:3210/cg_new/</url>
+				</server>
+				<server>
+					<name>正式伺服器－香港</name>
+					<url>http://patch.joypark.com.tw:3210/cg_hk/</url>
+				</server>
+				<server>
+					<name>測試伺服器</name>
+					<url>http://patch.joypark.com.tw:3210/cg_test/</url>
+				</server>
+			</servers>

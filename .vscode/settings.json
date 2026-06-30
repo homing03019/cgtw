@@ -1,0 +1,12 @@
+{
+  "[lua]": {
+    "files.encoding": "gbk"
+  },
+  "[c]": {
+    "files.encoding": "gbk"
+  },
+  "[h]": {
+    "files.encoding": "gbk"
+  },
+  "files.autoGuessEncoding": true
+}

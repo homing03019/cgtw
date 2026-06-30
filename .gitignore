@@ -1,0 +1,42 @@
+# Game binaries and runtime
+*.exe
+*.dll
+*.dmp
+*.bat
+UNWISE.*
+cg2d.exe.*
+idguardlibr.dll.*
+
+# Large game data (keep source in lua/, luaUI/, scripts/)
+bin/
+bin_patched/
+data/
+map/
+images/
+export_gif_dir*/
+Upl/
+Log/
+start.log
+systemlog.txt
+deploy_verify.txt
+verify_result.txt
+patch_*_log.txt
+
+# Cursor / editor temp
+$null
+_map_snip.txt
+_nav_fn.txt
+_orig_run.txt
+_run_btn.txt
+_script.ini
+_verify.txt
+hb_buttons.txt
+pet_*.txt
+rejoin.txt
+
+# Backup snapshots (large)
+_backup/
+
+# OS
+Thumbs.db
+Desktop.ini

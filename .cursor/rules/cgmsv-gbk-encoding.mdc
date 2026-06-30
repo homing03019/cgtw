@@ -1,0 +1,37 @@
+---
+description: cg2d 客戶端 Lua/UI 必須 GBK，禁止 UTF-8 亂改中文
+globs: "{luaUI/**,lua/**}/**/*"
+alwaysApply: false
+---
+
+# GBK 編碼（客戶端 luaUI / lua）
+
+本專案 `luaUI/`、`lua/` 內含**簡體中文 UI 字串**，檔案編碼為 **GBK**（非 UTF-8）。
+
+## 禁止
+
+- 勿用 Cursor **StrReplace / Write** 直接改含中文的 `.lua`（易變 UTF-8 或 `锟斤拷`）
+- 勿把檔案另存為 UTF-8
+- 勿用 PowerShell `Set-Content` / `Out-File` 寫入 Lua（預設 UTF-16/UTF-8）
+
+## 必須
+
+1. 編輯前確認右下角編碼為 **GBK**
+2. 改含中文的 Lua：用 **Python** 以 bytes 讀寫  
+   `Path(f).read_bytes().decode('gbk')` → 修改 → `.encode('gbk')`
+3. 修改後執行：`python luaUI/scripts/verify_gbk.py <檔案>`
+4. 只改玩家可見字串（按鈕、NLG、視窗標題）；code identifier 保持英文
+
+## 雙邊工作區
+
+改 **客戶端 UI/Lua**（`D:\cgtw`）或 **服務端 Lua**（`C:\cgmsv_26.5c\gmsv`）時，**兩邊都要**有 GBK 鎖定：
+
+| 位置 | 路徑 |
+|------|------|
+| 客戶端 | `D:\cgtw` — `.vscode/settings.json`、`.cursorrules` |
+| 服務端 | `C:\cgmsv_26.5c\gmsv` — 同上 + `tools\verify_gbk.py` |
+
+## 上傳 / 測試
+
+- 客戶端改動：重開 `cg2d.bat` 測試
+- 服務端改動：`python C:\cgmsv_26.5c\tools\verify_gbk.py` 後重啟 cgmsv

@@ -1,0 +1,4 @@
+output/
+testdata/**/*.bin
+testdata/**/*.cgp
+testdata/**/*.dat
