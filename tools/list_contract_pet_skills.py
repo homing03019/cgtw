@@ -11,7 +11,7 @@ SKILL_TXT = Path(r"C:/Users/User/AppData/Local/Temp/skill.txt")
 SUMMON_SKILL_POOLS = {
     "combo": [0, 1, 3, 4, 5, 6],
     "zhuren": [7, 8, 9, 10, 11, 12],
-    "status_phys": [13, 14, 15, 16, 17, 18],
+    "status_phys": [],
     "earth": [19, 20, 21, 22],
     "water": [23, 24, 25, 26],
     "fire": [27, 28, 29, 30],
@@ -23,12 +23,14 @@ SUMMON_SKILL_POOLS = {
     "elem_def": [55, 56, 57, 58, 59, 60],
     "heal": [61, 62, 63],
     "clean": [64, 65, 66, 67, 68],
-    "curse": [75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88],
+    "curse": [75, 76, 77, 78, 79, 80],
     "assassin": [74],
     "shoot": [73],
     "aoe_phys": [991],
     "aoe_magic": [992, 993, 994, 995, 27, 28, 29, 30],
 }
+
+PET_SKILL_WHITELIST = {67, 68, 73, 74}
 
 LEARN_COL = 10  # 1-based column index in skill.txt
 FIELD_COL = 6
@@ -54,8 +56,9 @@ def load_skills() -> dict[int, dict]:
 
 
 def is_learnable(sid: int, skills: dict[int, dict], allow_heal: bool = True) -> tuple[bool, str]:
-    if sid in (73, 74):
-        return True, "固定（弓宠射击/通用）"
+    if sid in PET_SKILL_WHITELIST:
+        extra = "弓宠/洁净白名单" if sid in (73, 74) else "洁净/气绝白名单"
+        return True, extra
     if 991 <= sid <= 995:
         return True, "契约专属AOE"
     s = skills.get(sid)
@@ -82,10 +85,12 @@ def main() -> None:
     lines = [
         "# 契约召唤宠 — 可学技能清单",
         "",
-        "规则（拟采用）：",
-        "- **可学**：skill.txt 学习栏 `0`（宠物/抗性）、`2`（战斗共用）、`4`（补血/辅助）",
-        "- **不可学**：`3`（玩家专用，如元素祈祷）、`field≥5`（Boss技）",
-        "- 弓宠额外固定：**攻击(73)**；池内 **射击(73)**",
+        "规则（当前）：",
+        "- **可学**：skill.txt 学习栏 `0` / `2` / `4`，或白名单 67/68/73/74",
+        "- **不可学**：`3`（玩家专用祈祷等，67/68 除外）、`field≥5`（Boss技）",
+        "- **诅咒池**：仅状态攻击 75–80（已移除金钱攻击等）",
+        "- **抗性 13–18**：已取消",
+        "- **等级**：普通宠 Lv3–8，Boss Lv4–10",
         "- 五围流派会决定从哪些**技能池**抽取；每场随机 0–3 招 + 可能强制 AOE",
         "",
     ]
