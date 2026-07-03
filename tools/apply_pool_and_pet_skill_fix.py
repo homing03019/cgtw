@@ -45,8 +45,8 @@ function Module:loadPetSkillLearnFlags()
       local fieldFlag = tonumber(parts[PET_SKILL_FIELD_COL]) or 0
       local learnFlag = tonumber(parts[PET_SKILL_LEARN_COL]) or 0
       if skillId ~= nil then
-        -- 0/2: pet or shared; 3/4: player-only / heal (boss prayer etc.)
-        if (learnFlag == 0 or learnFlag == 2) and fieldFlag < 5 then
+        -- 0/2: 战斗或宠物共用; 4: 补血/辅助; 排除 3 玩家专用与 field>=5
+        if (learnFlag == 0 or learnFlag == 2 or learnFlag == 4) and fieldFlag < 5 then
           self.petSkillLearnFlags[skillId] = true
         end
       end
