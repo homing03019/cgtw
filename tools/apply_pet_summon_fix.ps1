@@ -1,10 +1,11 @@
-# Apply petSummonContract.lua drop-notification + GBK card-info fix, then restart cgmsv.
+# Apply petSummonContract fixes + restore vanilla AOE magic, then restart cgmsv.
 # Run from D:\cgtw (PowerShell):
 #   powershell -NoProfile -ExecutionPolicy Bypass -File tools\apply_pet_summon_fix.ps1
 
 $ErrorActionPreference = 'Stop'
 $Root = Split-Path -Parent $PSScriptRoot
-$FixPy = Join-Path $Root 'tools\fix_pet_summon_contract_drop.py'
+$FixDropPy = Join-Path $Root 'tools\fix_pet_summon_contract_drop.py'
+$FixMagicPy = Join-Path $Root 'tools\fix_restore_vanilla_aoe_magic.py'
 
 $LuaCandidates = @(
     'C:\cgmsv_26.5c\gmsv\lua\modules\petSummonContract.lua',

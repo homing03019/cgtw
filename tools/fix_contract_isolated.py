@@ -96,7 +96,7 @@ def parse_rows(text):
 def vanilla_skill_rows(vanilla_text, skill_id):
     out = []
     for p in parse_rows(vanilla_text):
-        if len(p) > 6 and p[5] == skill_id and p[4].startswith("1300"):
+        if len(p) > 6 and p[5] == skill_id:
             out.append("\t".join(p))
     return out
 
@@ -224,7 +224,7 @@ local CUSTOM_AOE_TECH_BASE = {
         "  [27] = true, [28] = true, [29] = true, [30] = true,\n"
         "  [992] = true, [993] = true, [994] = true, [995] = true,\n"
         "}\n"
-        "local MAGIC_AOE_BY_ELEMENT = { earth = 992, water = 993, fire = 994, wind = 995 }",
+        "local MAGIC_AOE_BY_ELEMENT = { earth = 27, water = 28, fire = 29, wind = 30 }",
         text,
         flags=re.S,
     )
@@ -239,24 +239,10 @@ local CUSTOM_AOE_TECH_BASE = {
             "  end\n"
             "  return skillId * 100 + (level - 1)",
         )
-    text = text.replace(
-        "tryAddPetCombatSkill(charIndex, petIndex, 4, isBoss, bpTotal)",
-        "tryAddPetCombatSkill(charIndex, petIndex, 991, isBoss, bpTotal)",
-    )
-    text = text.replace("table.insert(picked, 4)", "table.insert(picked, 991)", 1)
-    text = text.replace(
-        "local pool = { 27, 28, 29, 30 }",
-        "local pool = { 992, 993, 994, 995 }",
-    )
-    text = text.replace("return 30", "return 995")
-    text = text.replace("return 29", "return 994")
+    # Contract skills 991-995 are isolated in tech.txt; keep vanilla 4/27-30 for normal play.
     text = text.replace(
         "local CHAZ_PET_SKILL_FIX_FLAG = './lua/fix_chaz_pet_skills_v2.done'",
         "local CHAZ_PET_SKILL_FIX_FLAG = './lua/fix_chaz_pet_skills_v3.done'",
-    )
-    text = text.replace(
-        "local desired = { 2600, 400, 2700, 2800, 2900, 3000 }",
-        "local desired = { 2600, 199100, 199200, 199210, 199220, 199230 }",
     )
     if "calcAdvancedPetTechId" in text and "customBase = CUSTOM_AOE_TECH_BASE" not in text:
         pass

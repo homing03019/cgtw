@@ -247,7 +247,7 @@ def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--lua", type=Path, help="path to petSummonContract.lua")
     ap.add_argument("--dry-run", action="store_true", help="print changes only")
-    ap.add_argument("--scp", action="store_true", help="upload via scp to cgmsv-server after patch")
+    ap.add_argument("--restart", action="store_true", help="restart cgmsv after patch (Windows)")
     args = ap.parse_args()
 
     lua_path = find_lua(args.lua)
