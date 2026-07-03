@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""Cap-aware BP distribution for contract summon (per-stat max 62)."""
+"""Cap-aware BP distribution for contract summon (per-stat max 62).
+
+Normal contract BP total: 120-170 (uniform random).
+"""
 from __future__ import annotations
 
 import subprocess
