@@ -37,6 +37,10 @@ rejoin.txt
 # Backup snapshots (large)
 _backup/
 
+# Local server Lua snapshots (copy from cgmsv for cloud-agent patching)
+server_mirror/**/*.lua
+server_mirror/**/*.lua.bak
+
 # OS
 Thumbs.db
 Desktop.ini
