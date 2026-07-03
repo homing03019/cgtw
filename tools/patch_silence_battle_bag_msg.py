@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""Silence battle-end auto bag cleanup popup/messages in manaPool."""
+"""Silence battle-end auto bag cleanup popup only (keep magic stone messages)."""
 from __future__ import annotations
 
 import subprocess
@@ -11,18 +11,19 @@ REMOTE_LUA = "/cgmsv_26.5c/gmsv/lua/Modules/heroesBattleOver.lua"
 TEMP = Path(r"C:/Users/User/AppData/Local/Temp")
 REPO_MIRROR = Path(r"D:/cgtw/server_mirror/lua/modules")
 
-REPLACEMENTS = [
+SAY_SILENCE = (
+    '      NLG.Say(charIndex,-1,"检测到你开启了交易，战斗后包包自动清理完毕。",1,3);',
+    "      -- auto bag cleanup notice silenced",
+)
+
+RESTORE_MESSAGES = [
     (
-        '      NLG.Say(charIndex,-1,"检测到你开启了交易，战斗后包包自动清理完毕。",1,3);',
-        "      -- auto bag cleanup notice silenced",
-    ),
-    (
-        '      NLG.SystemMessage(charIndex, targetName.."魔石已售出，获得【" .. price*soldrate .. "】魔币。");',
         "      -- magic stone sold notice silenced",
+        '      NLG.SystemMessage(charIndex, targetName.."魔石已售出，获得【" .. price*soldrate .. "】魔币。");',
     ),
     (
-        '      NLG.SystemMessage(charIndex, "钱包满了！");',
         "      -- wallet full notice silenced",
+        '      NLG.SystemMessage(charIndex, "钱包满了！");',
     ),
 ]
 
@@ -30,10 +31,17 @@ REPLACEMENTS = [
 def patch(text: str) -> str:
     text = text.replace("\r\n", "\n")
     changed = False
-    for old, new in REPLACEMENTS:
+
+    old, new = SAY_SILENCE
+    if old in text:
+        text = text.replace(old, new, 1)
+        changed = True
+
+    for old, new in RESTORE_MESSAGES:
         if old in text:
             text = text.replace(old, new, 1)
             changed = True
+
     if not changed:
         if "auto bag cleanup notice silenced" in text:
             print("already patched")
@@ -72,7 +80,7 @@ def main() -> int:
     REPO_MIRROR.mkdir(parents=True, exist_ok=True)
     write_gbk(REPO_MIRROR / "heroesBattleOver.lua", text)
     deploy(out)
-    print("deployed heroesBattleOver.lua (silenced battle bag notices)")
+    print("deployed heroesBattleOver.lua (popup silenced, magic stone msgs kept)")
     restart()
     print("cgmsv restart triggered")
     return 0
